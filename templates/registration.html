@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block contentarea %}
+    <h1>{{ Sh }}</h1>
+    <h1>Time:{{ DateTime.Now }}</h1>
+    <img src="../media/{{ Sh }}" style="height: 50px;width:50px"/>
+    <div class="col-sm-12">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <h3 class="text text-success text-center">Registration Form Here</h3>
+        <hr style="background: #0F9E5E;min-height: 2px">
+        <script>
+            alert('{{ Res }}');
+        </script>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="col-sm-6">
+            <span>Name</span>
+            <input type="text" class="form-control" name="txtname">
+            <span>Sturdent Roll Number</span>
+            <input type="text" class="form-control" name="txtroll">
+            <span>Password</span>
+            <input type="password" class="form-control" name="txtpass">
+            <span>Branch</span>
+            <select class="form-control" name="ddlbranch">
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+            </select>
+            <span>Choose Sport Type</span>
+            <select class="form-control" name="ddlsporttype">
+                <option>Football</option>
+                <option>Racing</option>
+                 <option>Riding</option>
+            </select>
+            <span>Mobile Number</span>
+            <input type="text" name="txtmobile" class="form-control">
+    <br>
+              <input type="submit" class="btn btn-success" value="Register Now" style="margin-left: 10%">
+        </div>
+          <div class="col-sm-6">
+               <span>Father Name</span>
+                 <input type="text" class="form-control" name="txtfname">
+              <span>Student Email</span>
+              <input type="email" class="form-control" name="txtemail">
+               <span>Confirm Password</span>
+            <input type="password" class="form-control" name="txtcpass">
+              <span>Year</span>
+            <select class="form-control" name="ddlyear">
+                <option>1</option>
+                <option>2</option>
+                  <option>3</option>
+            </select>
+              <span>Student Adhar Number</span>
+              <input type="text" class="form-control" name="txtadhar">
+              <span>Picture</span>
+              <input type="file" class="form-control" name="fupic"/>
+          </div>
+</form>
+        </div>
+
+    <div class="col-sm-2"></div>
+    </div>
+    <script>
+    $(document).ready(function(){
+        $(".form-control").attr("required",true);
+    })
+    </script>
+{% endblock %}

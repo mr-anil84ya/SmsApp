@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block  contentarea %}
+<div class="col-sm-12">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+    <br><h2>Registration form</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        Name
+        <input type="text" name="txtname" class="form-control">
+        Email
+        <input type="email" name="txtemail" class="form-control">
+        Mobile
+        <input type="text" class="form-control" name="txtmobile">
+        picture
+        <input type="file" class="form-control" name="fupic">
+        <br>
+        <input type="submit" class="btn btn-success" value="save">
+    </form>
+</div>
+    <div class="col-sm-4">
+        <h2>{{ Res }}</h2>
+        <script>
+            alert('"+{{ Res }}+"')
+        </script>
+    </div>
+</div>
+{% endblock %}

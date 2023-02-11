@@ -1,0 +1,97 @@
+{% extends 'StudentZone/StudentMaster.html' %}
+{% block contentarea %}
+    <style>
+    span,.fa{
+        color:maroon;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    </style>
+    <script>
+    $(document).ready(function () {
+        var total,msg;
+    $("#sp1,#sp2,#sp3,#sp4,#sp5").html(1).hide();
+        $("#s1").click(function(){
+        var s1=$("#sp1").text();
+         $("#s1").css("color","yellow");
+            $("#s5,#s4,#s3,#s2").css("color","maroon");
+
+        })
+        $("#s2").click(function(){
+            var s1=Number($("#sp1").text());
+            var s2=Number($("#sp2").text());
+            total=s1+s2;
+            $("#s1,#s2").css("color","yellow");
+               $("#s5,#s4,#s3").css("color","maroon");
+
+        })
+        $("#s3").click(function(){
+            var s1=Number($("#sp1").text());
+            var s2=Number($("#sp2").text());
+            var s3=Number($("#sp3").text());
+             total=s1+s2+s3;
+             $("#s1,#s2,#s3").css("color","yellow");
+               $("#s5,#s4").css("color","maroon");
+        })
+        $("#s4").click(function(){
+            var s1=Number($("#sp1").text());
+            var s2=Number($("#sp2").text());
+            var s3=Number($("#sp3").text());
+            var s4=Number($("#sp4").text());
+             total=s1+s2+s3+s4;
+               $("#s1,#s2,#s3,#s4").css("color","yellow");
+               $("#s5").css("color","maroon");
+        })
+        $("#s5").click(function(){
+            var s1=Number($("#sp1").text());
+            var s2=Number($("#sp2").text());
+            var s3=Number($("#sp3").text());
+            var s4=Number($("#sp4").text());
+            var s5=Number($("#sp5").text());
+             total=s1+s2+s3+s4+s5;
+            $("#s1,#s2,#s3,#s4,#s5").css("color","yellow");
+        })
+        $("#frm").submit(function () {
+        msg=$("#txtmsg").val();
+        $.ajax({
+            type:"Post",url:"/StudentZone/feedback/",data:{Msg:msg,Total:total},success:function(data)
+            {
+              $("#show").html(data).fadeToggle(2000).fadeOut(2000);
+               $("#s5,#s4,#s3,#s2,#s1").css("color","maroon");
+              $("#txtmsg").val("");
+            }
+        })
+        return false;
+        })
+    })
+    </script>
+    <div class="col-sm-12">
+    <div class="col-sm-4"></div>
+     <div class="col-sm-4 panel panel-body" style="box-shadow: 1px 1px 1px 2px grey;margin-top: 1%">
+         <h3>Your valuable feedback..</h3>
+         <hr>
+         <h4>please Rating here..</h4>
+         <form action="" method="post" id="frm">
+             {% csrf_token %}
+         <span class="fa fa-star" id="s1"></span>
+            <span class="fa fa-star" id="sp1"></span>
+           <span class="fa fa-star" id="s2"></span>
+              <span class="fa fa-star" id="sp2"></span>
+           <span class="fa fa-star" id="s3"></span>
+              <span class="fa fa-star" id="sp3"></span>
+         <span class="fa fa-star" id="s4"></span>
+              <span class="fa fa-star" id="sp4"></span>
+           <span class="fa fa-star" id="s5"></span>
+              <span class="fa fa-star" id="sp5"></span>
+         <br>
+         <h4>Write Your Review Here..</h4>
+         <textarea class="form-control" id="txtmsg" style="height: 100px;"></textarea>
+         <br>
+         <input type="submit" class="btn btn-danger" value="Send Review">
+             <h4 id="show"></h4>
+             </form>
+
+     </div>
+     <div class="col-sm-4"></div>
+    </div>
+{% endblock %}

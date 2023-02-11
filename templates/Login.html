@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contentarea %}
+    <div class="col-sm-12">
+
+        <h2>{{ Result }}</h2>
+    <div class="col-sm-12">
+        <div class="col-sm-4"></div>
+         <div class="col-sm-4 panel panel-body" style="box-shadow: 0px 1px 1px 4px darkgrey;margin-top: 2%">
+
+             <h3 class="text-center">Login Panel</h3>
+             <br>
+             <form action="" method="post">
+                 {% csrf_token %}
+                 <input type="text" class="form-control" placeholder="Enter Roll Number" name="txtuserid">
+                 <br>
+                  <input type="password" class="form-control" placeholder="Enter Password" name="txtpass">
+                 <br>
+                 <input type="submit" class="btn btn-success" style="width: 30%" value="Login">
+             </form>
+         </div>
+         <div class="col-sm-4"></div>
+    </div>
+    </div>
+{% endblock %}
